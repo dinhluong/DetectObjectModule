@@ -12,7 +12,7 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "GeometryTypes.hpp"
-
+#include <opencv2/
 class Marker
 {
 public:
@@ -38,7 +38,7 @@ public:
     Transformation transformation;
     //Helper function to draw the marker contour over the image.
     
-    void drawContour(cv::Mat& image, cv::Scalar color = CV_RGB(0,250,0)) const;
+    void drawContour(cv::Mat& image, cv::Scalar color = (0,250,0)) const;
 };
 
 #endif /* defined(_____Marker__) */

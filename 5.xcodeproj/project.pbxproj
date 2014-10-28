@@ -35,9 +35,9 @@
 		2544B09119EFA5E600EFF4C5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2544B09019EFA5E600EFF4C5 /* AssetsLibrary.framework */; };
 		2544B09319EFA5F000EFF4C5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2544B09219EFA5F000EFF4C5 /* Accelerate.framework */; };
 		2544B09519EFA5F600EFF4C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2544B09419EFA5F600EFF4C5 /* AVFoundation.framework */; };
-		2544B09B19EFD11900EFF4C5 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2544B09A19EFD11900EFF4C5 /* opencv2.framework */; };
 		2544B09E19F0CFC200EFF4C5 /* GeometryTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2544B09C19F0CFC200EFF4C5 /* GeometryTypes.cpp */; };
 		256E63A919F75DDB00C44496 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256E63A819F75DDB00C44496 /* CoreText.framework */; };
+		256F8EAB19FF41C300368657 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256F8EAA19FF41C300368657 /* opencv2.framework */; };
 		2585E0F919F5F264009B78F3 /* TinySP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2585E0F719F5F264009B78F3 /* TinySP.cpp */; };
 		2585E0FE19F5F2CE009B78F3 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2585E0FD19F5F2CE009B78F3 /* EAGLView.m */; };
 		2585E10119F5F4A3009B78F3 /* SimpleVisualizationController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2585E10019F5F4A3009B78F3 /* SimpleVisualizationController.mm */; };
@@ -94,10 +94,10 @@
 		2544B09019EFA5E600EFF4C5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2544B09219EFA5F000EFF4C5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2544B09419EFA5F600EFF4C5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		2544B09A19EFD11900EFF4C5 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		2544B09C19F0CFC200EFF4C5 /* GeometryTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GeometryTypes.cpp; path = ../GeometryTypes.cpp; sourceTree = "<group>"; };
 		2544B09D19F0CFC200EFF4C5 /* GeometryTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GeometryTypes.hpp; path = ../GeometryTypes.hpp; sourceTree = "<group>"; };
 		256E63A819F75DDB00C44496 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		256F8EAA19FF41C300368657 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		2585E0F719F5F264009B78F3 /* TinySP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinySP.cpp; sourceTree = "<group>"; };
 		2585E0F819F5F264009B78F3 /* TinySP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TinySP.hpp; sourceTree = "<group>"; };
 		2585E0FC19F5F2CE009B78F3 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
@@ -114,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				256F8EAB19FF41C300368657 /* opencv2.framework in Frameworks */,
 				25B479C519FDFBE0005A7FBA /* AudioToolbox.framework in Frameworks */,
 				256E63A919F75DDB00C44496 /* CoreText.framework in Frameworks */,
 				2585E10319F6004C009B78F3 /* GLKit.framework in Frameworks */,
@@ -125,7 +126,6 @@
 				2544B08C19EFA5D400EFF4C5 /* CoreFoundation.framework in Frameworks */,
 				2544B08D19EFA5D400EFF4C5 /* CoreImage.framework in Frameworks */,
 				2544B08E19EFA5D400EFF4C5 /* CoreMedia.framework in Frameworks */,
-				2544B09B19EFD11900EFF4C5 /* opencv2.framework in Frameworks */,
 				2544B08F19EFA5D400EFF4C5 /* CoreVideo.framework in Frameworks */,
 				2544B05419EFA5A400EFF4C5 /* CoreGraphics.framework in Frameworks */,
 				2544B08719EFA5BA00EFF4C5 /* QuartzCore.framework in Frameworks */,
@@ -204,12 +204,12 @@
 		2544B05019EFA5A400EFF4C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				256F8EAA19FF41C300368657 /* opencv2.framework */,
 				25B479C419FDFBE0005A7FBA /* AudioToolbox.framework */,
 				256E63A819F75DDB00C44496 /* CoreText.framework */,
 				2585E10219F6004C009B78F3 /* GLKit.framework */,
 				250F69B519F4F58900C7794F /* OpenAL.framework */,
 				250F69B619F4F58900C7794F /* OpenGLES.framework */,
-				2544B09A19EFD11900EFF4C5 /* opencv2.framework */,
 				2544B09419EFA5F600EFF4C5 /* AVFoundation.framework */,
 				2544B09219EFA5F000EFF4C5 /* Accelerate.framework */,
 				2544B09019EFA5E600EFF4C5 /* AssetsLibrary.framework */,

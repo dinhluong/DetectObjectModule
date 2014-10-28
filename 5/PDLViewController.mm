@@ -11,7 +11,7 @@
 #import "MarkerDetector.hpp"
 #import "SimpleVisualizationController.h"
 
-@interface PDLViewController ()<VideoSourceDelegate>
+@interface PDLViewController() <VideoSourceDelegate>
 
 @property (strong, nonatomic) VideoSource * videoSource;
 @property (nonatomic) MarkerDetector * markerDetector;
@@ -22,9 +22,12 @@
 @implementation PDLViewController
 @synthesize glview, videoSource, markerDetector, visualizationController;
 
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     self.videoSource = [[VideoSource alloc] init];
     self.videoSource.delegate = self;
@@ -35,7 +38,7 @@
 
 - (void)viewDidUnload
 {
-    
+    // Release any retained subviews of the main view.
     [self setGlview:nil];
     [super viewDidUnload];
 }
@@ -61,12 +64,14 @@
     // We force the interface orientation to landscape right for simplicity.
     // This orientation has one-to-one coordinates mapping from frame buffer to view.
     // So we don't have to worry about inconsistent AR.
-    return interfaceOrientation == UIInterfaceOrientationPortrait;
+    return interfaceOrientation == UIInterfaceOrientationLandscapeRight;
 }
+
 - (void) dealloc
 {
     delete self.markerDetector;
 }
+
 
 #pragma mark - VideoSourceDelegate
 -(void)frameReady:(BGRAVideoFrame) frame
@@ -84,12 +89,6 @@
         [self.visualizationController setTransformationList:(self.markerDetector->getTransformations)()];
         [self.visualizationController drawFrame];
     });
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
