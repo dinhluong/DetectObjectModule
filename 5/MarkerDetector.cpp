@@ -13,7 +13,7 @@
 #include "MarkerDetector.hpp"
 #include "Marker.hpp"
 #include "TinySP.hpp"
-
+#include <opencv2/imgproc.hpp>
 MarkerDetector::MarkerDetector(CameraCalibration calibration): m_minContourLengthAllowed(100), markerSize(100,100)
 {
     cv::Mat(3,3, CV_32F, const_cast<float*>(&calibration.getIntrinsic().data[0])).copyTo(camMatrix);
@@ -89,7 +89,7 @@ bool MarkerDetector::findMarkers(const BGRAVideoFrame& frame, std::vector<Marker
 void MarkerDetector::prepareImage(const cv::Mat& bgraMat, cv::Mat& grayscale) const
 {
     // Convert to gray image
-    cv::cvtColor(bgraMat, grayscale, CV_BGRA2GRAY);
+    cv::cvtColor(bgraMat, grayscale, cv::COLOR_BGR2GRAY);
 }
 
 void MarkerDetector::performThreshold(const cv::Mat& grayscale, cv::Mat& thresholdImg) const
@@ -114,7 +114,7 @@ void MarkerDetector::findContours(cv::Mat& thresholdImg, ContoursVector& contour
     
     // Tìm tất cả contour
     ContoursVector allContours;
-    cv::findContours(thresholdImg, allContours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+    cv::findContours(thresholdImg, allContours, cv::RETR_LIST, cv::CHAIN_APPROX_NONE);
     
     contours.clear();
     for (size_t i=0; i<allContours.size(); i++)
@@ -288,7 +288,7 @@ void MarkerDetector::recognizeMarkers(const cv::Mat& grayscale, std::vector<Mark
         }
         
         cv::TermCriteria termCriteria = cv::TermCriteria(cv::TermCriteria::MAX_ITER | cv::TermCriteria::EPS, 30, 0.01);
-        cv::cornerSubPix(grayscale, preciseCorners, cvSize(5,5), cvSize(-1,-1), termCriteria);
+        cv::cornerSubPix(grayscale, preciseCorners, cv::Size(5,5), cv::Size(-1,-1), termCriteria);
         
         // Copy refined corners position back to markers
         for (size_t i=0; i<goodMarkers.size(); i++)

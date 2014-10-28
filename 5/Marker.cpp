@@ -7,7 +7,7 @@
 //
 
 #include "Marker.hpp"
-
+#include <assert.h>
 Marker::Marker()
 :id(-1)
 {
@@ -172,10 +172,10 @@ void Marker::drawContour(cv::Mat& image, cv::Scalar color) const
 {
     float thickness = 2;
     
-    cv::line(image, points[0], points[1], color, thickness, CV_AA);
-    cv::line(image, points[1], points[2], color, thickness, CV_AA);
-    cv::line(image, points[2], points[3], color, thickness, CV_AA);
-    cv::line(image, points[3], points[0], color, thickness, CV_AA);
+    cv::line(image, points[0], points[1], color, thickness);
+    cv::line(image, points[1], points[2], color, thickness);
+    cv::line(image, points[2], points[3], color, thickness);
+    cv::line(image, points[3], points[0], color, thickness);
 }
 
 
