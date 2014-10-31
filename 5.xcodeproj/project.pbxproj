@@ -43,6 +43,7 @@
 		2585E10119F5F4A3009B78F3 /* SimpleVisualizationController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2585E10019F5F4A3009B78F3 /* SimpleVisualizationController.mm */; };
 		2585E10319F6004C009B78F3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2585E10219F6004C009B78F3 /* GLKit.framework */; };
 		2585E10619F60AE9009B78F3 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 2585E10519F60AE9009B78F3 /* marker.png */; };
+		25AA05FE1A038BC4003AEB78 /* cube.c in Sources */ = {isa = PBXBuildFile; fileRef = 25AA05FD1A038BC4003AEB78 /* cube.c */; };
 		25B479C519FDFBE0005A7FBA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B479C419FDFBE0005A7FBA /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		2585E10019F5F4A3009B78F3 /* SimpleVisualizationController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleVisualizationController.mm; sourceTree = "<group>"; };
 		2585E10219F6004C009B78F3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		2585E10519F60AE9009B78F3 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
+		25AA05FD1A038BC4003AEB78 /* cube.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cube.c; sourceTree = "<group>"; };
+		25AA05FF1A038DB2003AEB78 /* cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cube.h; sourceTree = "<group>"; };
 		25B479C419FDFBE0005A7FBA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -174,6 +177,8 @@
 			children = (
 				250F69C519F5071B00C7794F /* BGRAVideoFrame.h */,
 				250F69C619F5081100C7794F /* VideoSource.h */,
+				25AA05FF1A038DB2003AEB78 /* cube.h */,
+				25AA05FD1A038BC4003AEB78 /* cube.c */,
 				250F69C719F5081100C7794F /* VideoSource.mm */,
 				250F69CA19F508F600C7794F /* CameraCalibration.hpp */,
 				250F69C919F508F600C7794F /* CameraCalibration.cpp */,
@@ -387,6 +392,7 @@
 				2544B06819EFA5A500EFF4C5 /* PDLViewController.mm in Sources */,
 				2544B09E19F0CFC200EFF4C5 /* GeometryTypes.cpp in Sources */,
 				250F69C019F4F61600C7794F /* Marker.cpp in Sources */,
+				25AA05FE1A038BC4003AEB78 /* cube.c in Sources */,
 				250F69CB19F508F600C7794F /* CameraCalibration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +528,7 @@
 				GCC_PREFIX_HEADER = "5/5-Prefix.pch";
 				INFOPLIST_FILE = "5/5-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8bfea773-cd07-4714-9967-ac8825dbb3c8";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -544,6 +551,7 @@
 				GCC_PREFIX_HEADER = "5/5-Prefix.pch";
 				INFOPLIST_FILE = "5/5-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8bfea773-cd07-4714-9967-ac8825dbb3c8";
 				TARGETED_DEVICE_FAMILY = 1;

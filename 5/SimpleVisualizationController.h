@@ -11,7 +11,8 @@
 #import "EAGLView.h"
 #import "CameraCalibration.hpp"
 #import "BGRAVideoFrame.h"
-
+#import "GeometryTypes.hpp"
+#import <vector>
 @interface SimpleVisualizationController : NSObject
 {
     EAGLView * m_glview;

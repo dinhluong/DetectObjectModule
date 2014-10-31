@@ -12,7 +12,8 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import <iostream>
-
+#include <GLKit/GLKit.h>
+#include "cube.c"
 @implementation SimpleVisualizationController
 
 -(id) initWithGLView:(EAGLView*)view calibration:(CameraCalibration) calibration frameSize:(CGSize) size;
@@ -166,35 +167,101 @@
     
     glPushMatrix();
     glLineWidth(3.0f);
-    
-//    float lineX[] = {0,0,0,1,0,0};
-//    float lineY[] = {0,0,0,0,1,0};
-//    float lineZ[] = {0,0,0,0,0,1};
-    float line4[] = {-1,-1,0,-1,-1,2};
-    float line5[] = {-1,1,0,-1,1,2};
-    float line6[] = {-1,1,0,-1,-1,0};
-    float line7[] = {-1,1,2,-1,-1,2};
-    float line8[] = {-1,1,0,1,1,0};
-    float line9[] = {1,1,0,1,1,2};
-    float line10[] = {-1,1,2,1,1,2};
-    float line11[] = {1,-1,0,1,-1,2};
-    float line12[] = {1,-1,0,-1,-1,0};
-    float line13[] = {1,1,2,1,-1,2};
-    float line14[] = {-1,-1,2,1,-1,2};
-    float line15[] = {1,1,0,1,-1,0};
-    const GLfloat squareVertices[] = {
-        -0.5f, -0.5f,
-        0.5f,  -0.5f,
-        -0.5f,  0.5f,
-        0.5f,   0.5f,
-    };
-    const GLubyte squareColors[] = {
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0,
-        255,   0, 255, 255,
+
+//    float line4[] = {-1,-1,0,-1,-1,2};
+//    float line5[] = {-1,1,0,-1,1,2};
+//    float line6[] = {-1,1,0,-1,-1,0};
+//    float line7[] = {-1,1,2,-1,-1,2};
+//    float line8[] = {-1,1,0,1,1,0};
+//    float line9[] = {1,1,0,1,1,2};
+//    float line10[] = {-1,1,2,1,1,2};
+//    float line11[] = {1,-1,0,1,-1,2};
+//    float line12[] = {1,-1,0,-1,-1,0};
+//    float line13[] = {1,1,2,1,-1,2};
+//    float line14[] = {-1,-1,2,1,-1,2};
+//    float line15[] = {1,1,0,1,-1,0};
+    const GLfloat squareVertices1[] = {
+        -0.5f, -0.5f, 0,
+        0.5f,  -0.5f, 0,
+        -0.5f,  0.5f, 0,
+        0.5f,   0.5f, 0
     };
     
+    const GLfloat squareVertices2[] = {
+        -0.5f, -0.5f, 0,
+        0.5f,  -0.5f, 0,
+        -0.5f,  -0.5f, 1,
+        0.5f,   -0.5f, 1
+    };
+    
+    const GLfloat squareVertices3[] = {
+        0.5f, -0.5f, 0,
+        0.5f,  0.5f, 0,
+        0.5f,  -0.5f, 1,
+        0.5f,   0.5f, 1
+    };
+    
+    const GLfloat squareVertices4[] = {
+        -0.5f, -0.5f, 0,
+        -0.5f,  0.5f, 0,
+        -0.5f,  -0.5f, 1,
+        -0.5f,   0.5f, 1
+    };
+    
+    const GLfloat squareVertices5[] = {
+        -0.5f, 0.5f, 0,
+        0.5f, 0.5f, 0,
+        -0.5f,  0.5f, 1,
+        0.5f,  0.5f, 1
+    };
+    
+    const GLfloat squareVertices6[] = {
+        -0.5f, -0.5f, 1,
+        0.5f,  -0.5f, 1,
+        -0.5f,  0.5f, 1,
+        0.5f,   0.5f, 1
+    };
+    const GLubyte squareColors1[] = {
+        255, 0, 0, 0,
+        255, 0, 0, 0,
+        255, 0, 0, 0,
+        255, 0, 0, 0
+    };
+    
+    const GLubyte squareColors2[] = {
+        0, 255, 0, 0,
+        0, 255, 0, 0,
+        0, 255, 0, 0,
+        0, 255, 0, 0
+    };
+    
+    const GLubyte squareColors3[] = {
+        0, 0, 255, 0,
+        0, 0, 255, 0,
+        0, 0, 255, 0,
+        0, 0, 255, 0
+    };
+    
+    const GLubyte squareColors4[] = {
+        255, 100, 0, 0,
+        255, 100, 0, 0,
+        255, 100, 0, 0,
+        255, 100, 0, 0
+    };
+    
+    const GLubyte squareColors5[] = {
+        100, 100, 100, 0,
+        100, 100, 100, 0,
+        100, 100, 100, 0,
+        100, 100, 100, 0
+    };
+    
+    const GLubyte squareColors6[] = {
+        255, 0, 0, 0,
+        255, 0, 0, 0,
+        255, 0, 0, 0,
+        255, 0, 0, 0
+    };
     for (size_t transformationIndex=0; transformationIndex<m_transformations.size(); transformationIndex++)
     {
         const Transformation& transformation = m_transformations[transformationIndex];
@@ -204,79 +271,115 @@
         glLoadMatrixf(reinterpret_cast<const GLfloat*>(&glMatrix.data[0]));
         
         // draw data
-        glVertexPointer(2, GL_FLOAT, 0, squareVertices);
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors);
-        glEnableClientState(GL_COLOR_ARRAY);
+        glEnableVertexAttribArray(GLKVertexAttribPosition);
+        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, cubePositions);
         
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        glDisableClientState(GL_COLOR_ARRAY);
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, cubeTexels);
         
-        float scale = 0.5;
-        glScalef(scale, scale, scale);
         
-        glTranslatef(0, 0, 0.1f);
-        
-//        glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-//        glVertexPointer(3, GL_FLOAT, 0, lineX);
-//        glDrawArrays(GL_LINES, 0, 2);
+        glDrawArrays(GL_TRIANGLES, 0, cubeVertices);
+//        glVertexPointer(3, GL_FLOAT, 0, squareVertices1);
+//        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors1);
+//        glEnableClientState(GL_COLOR_ARRAY);
 //        
-//        glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
-//        glVertexPointer(3, GL_FLOAT, 0, lineY);
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+////        glDisableClientState(GL_COLOR_ARRAY);
+//        
+//        glVertexPointer(3, GL_FLOAT, 0, squareVertices2);
+////        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors2);
+////        glEnableClientState(GL_COLOR_ARRAY);
+//        
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+////        glDisableClientState(GL_COLOR_ARRAY);
+//        
+//        glVertexPointer(3, GL_FLOAT, 0, squareVertices3);
+////        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors3);
+////        glEnableClientState(GL_COLOR_ARRAY);
+//        
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+////        glDisableClientState(GL_COLOR_ARRAY);
+//        
+//        glVertexPointer(3, GL_FLOAT, 0, squareVertices4);
+////        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors4);
+////        glEnableClientState(GL_COLOR_ARRAY);
+//        
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+////        glDisableClientState(GL_COLOR_ARRAY);
+//        
+//        glVertexPointer(3, GL_FLOAT, 0, squareVertices5);
+////        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors5);
+////        glEnableClientState(GL_COLOR_ARRAY);
+//        
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+////        glDisableClientState(GL_COLOR_ARRAY);
+//        
+//        
+//        glVertexPointer(3, GL_FLOAT, 0, squareVertices6);
+////        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors6);
+////        glEnableClientState(GL_COLOR_ARRAY);
+//        
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+//        glDisableClientState(GL_COLOR_ARRAY);
+//        float scale = 0.5;
+//        glScalef(scale, scale, scale);
+//        
+//        glTranslatef(0, 0, 0.1f);
+        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line4);
 //        glDrawArrays(GL_LINES, 0, 2);
 //        
 //        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-//        glVertexPointer(3, GL_FLOAT, 0, lineZ);
+//        glVertexPointer(3, GL_FLOAT, 0, line5);
 //        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line4);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line5);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line6);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line7);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line8);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line9);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line10);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line11);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line12);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line13);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line14);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, line15);
-        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line6);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line7);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line8);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line9);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line10);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line11);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        
+////        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line12);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+////        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line13);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+////        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line14);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+////        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, line15);
+//        glDrawArrays(GL_LINES, 0, 2);
     }
 
     glPopMatrix();
